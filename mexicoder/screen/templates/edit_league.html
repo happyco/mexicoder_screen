@@ -1,0 +1,11 @@
+<h1>Edit League</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <ul>
+    {{ form }}
+  </ul>
+  <input type="submit" value="Update" />
+</form>
+
+<a href="{% url "league-list" %}">back to list</a>

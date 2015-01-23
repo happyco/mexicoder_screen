@@ -1,0 +1,16 @@
+<h1>Edit Team</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+    {% for league in object_list %}
+        <select>
+            <option value="league">{{ league }}</option>
+        </select>
+    {% endfor %}
+  <ul>
+    {{ form }}
+  </ul>
+  <input type="submit" value="Update" />
+</form>
+
+<a href="{% url "team-list" %}">back to list</a>

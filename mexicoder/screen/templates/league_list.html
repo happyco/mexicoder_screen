@@ -1,0 +1,26 @@
+{% block content %}
+<h1>League</h1>
+
+<ul>
+    <table border="1" style="width:30%">
+        <tr>
+                <th>League</th>
+        </tr>
+      {% for league in object_list %}
+        <tr>
+            <td>{{ league }}(<a href="{% url "league-edit" pk=league.id %}">edit</a>)/(<a href="{% url "league-delete" pk=league.id %}">delete</a>)</td>
+        </tr>
+      {% endfor %}
+    </table>
+</ul>
+
+{% endblock %}
+
+{% if league.id %}
+<h1>Edit League</h1>
+{% else %}
+<h1>Add League</h1>
+<a href="{% url "league-new" %}">add league</a>
+{% endif %}
+
+<form action="{{ action }}" method="POST">

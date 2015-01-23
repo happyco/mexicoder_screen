@@ -1,0 +1,11 @@
+<h1>Delete Team</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <ul>
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+  </ul>
+  <input type="submit" value="Confirm" />
+</form>
+
+<a href="{% url "team-list" %}">back to list</a>
