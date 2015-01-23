@@ -1,0 +1,16 @@
+<h1>Edit Person</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+    {% for person in object_list %}
+        <select>
+            <option value="person">{{ person }}</option>
+        </select>
+    {% endfor %}
+  <ul>
+    {{ form }}
+  </ul>
+  <input type="submit" value="Update" />
+</form>
+
+<a href="{% url "person-list" %}">back to list</a>
