@@ -1,0 +1,31 @@
+{% block content %}
+<a href="{% url "menu-list" %}">Home</a>
+<h1>Players</h1>
+<ul>
+    <table border="1" style="width:50%">
+            <tr>
+				<th>League</th>
+                <th>Team</th>
+                <th>Player</th>
+				<th>Coach</th>
+            </tr>
+                {% for person in object_list %}
+                    <tr>
+						<td>{{ person.team_name.league_team }}</td>
+                        <td>{{ person.team_name }}</td>
+                        <td>{{ person }} </td>
+                        
+					</tr>(<a href="{% url "person-edit" pk=person.id %}">edit</a>)/(<a href="{% url "person-delete" pk=person.id %}">delete</a>)
+                {% endfor %}
+        </table>
+</ul>
+{% endblock %}
+
+{% if person.id %}
+<h1>Edit Person</h1>
+{% else %}
+<h1>Add Person</h1>
+<a href="{% url "person-new" %}">add person</a>
+{% endif %}
+
+<form action="{{ action }}" method="POST">
