@@ -1,4 +1,5 @@
 {% block content %}
+<a href="{% url "menu-list" %}">Home</a>
 <h1>Team</h1>
 <ul>
     <table border="1" style="width:50%">
@@ -6,15 +7,11 @@
                 <th>League</th>
                 <th>Team</th>
             </tr>
-                {% for league in object_list %}
-                    {% for team in league.team_set.all %}
-
+                {% for team in object_list %}
                     <tr>
-                        <td>{{ league }}</td>
-                        <td>{{ team }} (<a href="{% url "team-edit" pk=team.id %}">edit</a>)/(<a href="{% url "delete-team" pk=team.id %}">delete</a>)</td>
+                        <td>{{ team.league_team }}</td>
+                        <td>{{ team }} (<a href="{% url "team-edit" pk=team.id %}">edit</a>)/(<a href="{% url "team-delete" pk=team.id %}">delete</a>)</td>
                     </tr>
-
-                    {% endfor %}
                 {% endfor %}
         </table>
 </ul>
