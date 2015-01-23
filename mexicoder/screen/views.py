@@ -108,3 +108,52 @@ class DeleteTeamView(DeleteView):
         context = super(DeleteTeamView, self).get_context_data(**kwargs)
         context['action'] = reverse('team-delete',
                                     kwargs={'pk': self.get_object().id})
+									
+class ListPersonView(ListView):
+    model = Person
+    template_name = 'person_list.html'
+
+
+class CreatePersonView(CreateView):
+
+    model = Person
+    template_name = 'new_person.html'
+
+    def get_success_url(self):
+        return reverse('person-list')
+
+    def get_context_data(self, **kwargs):
+
+        context = super(CreatePersonView, self).get_context_data(**kwargs)
+        context['action'] = reverse('person-new')
+
+        return context
+
+
+class UpdatePersonView(UpdateView):
+
+    model = Person
+    template_name = 'edit_person.html'
+
+    def get_success_url(self):
+        return reverse('person-list')
+
+    def get_context_data(self, **kwargs):
+
+        context = super(UpdatePersonView, self).get_context_data(**kwargs)
+        context['action'] = reverse('team-edit',
+                                    kwargs={'pk': self.get_object().id})
+
+        return context
+
+class DeletePersonView(DeleteView):
+    model = Person
+    template_name = 'delete_person.html'
+
+    def get_success_url(self):
+        return reverse('person-list')
+
+    def get_context_data(self, **kwargs):
+        context = super(DeletePersonView, self).get_context_data(**kwargs)
+        context['action'] = reverse('person-delete',
+                                    kwargs={'pk': self.get_object().id})
