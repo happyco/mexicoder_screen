@@ -35,7 +35,7 @@ class Person(models.Model):
     
     team_name = models.ForeignKey(Team)
 
-    player = models.BooleanField()
+    coach = models.BooleanField()
 
     def __str__(self):
         return ' '.join([
